@@ -1,0 +1,9 @@
+/.bundle
+/.env
+/.yardoc
+/images
+/data
+/results
+/doc
+/log/*.log
+/vendor/bundle
