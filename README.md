@@ -12,7 +12,7 @@ esa の日報に書いた所感を、Hatena Blog の記事（下書き）にす�
 ### 実行
 
 ```
-$ bundle exec esa2qiita.rb
+$ bundle exec ruby esa2qiita.rb
 ```
 
 ### 補足: direnv を利用する場合
