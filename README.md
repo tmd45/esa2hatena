@@ -7,12 +7,12 @@ esa の日報に書いた所感を、Hatena Blog の記事（下書き）にす�
 ### 準備
 
 - `$ bundle install`
-- `.env.skeleton` を元に必要な token やファイルを用意する。
+- `.env.skeleton` を元に必要な token を用意する
 
 ### 実行
 
 ```
-$ bundle exec ruby esa2qiita.rb
+$ bundle exec ruby esa2hatena.rb
 ```
 
 ### 補足: direnv を利用する場合
