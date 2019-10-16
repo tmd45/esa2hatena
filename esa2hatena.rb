@@ -81,6 +81,7 @@ module HatenaBlog
     end
   end
 
+  # はてなブログに下書き記事を作成する
   class DraftMaker
     attr_reader :client, :contents
 
@@ -103,6 +104,7 @@ module HatenaBlog
       blog_domain = ENV['HATENA_BLOG_DOMAIN']
       post_url = "https://blog.hatena.ne.jp/#{username}/#{blog_domain}/atom/entry"
 
+      # `[]` の中身がカテゴリになるはてなブログの記法
       title = "[自動投稿][日記]所感週報 #{Date.today.to_s}"
 
       entry = Atom::Entry.new(
