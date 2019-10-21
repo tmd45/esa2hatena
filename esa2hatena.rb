@@ -8,7 +8,7 @@ require 'pp'
 
 # bundle exec ruby esa2hatena.rb [2019-10-19]
 date_str = ARGV[0] || nil
-date = Date.parse(date_str)
+date = Date.parse(date_str) if date_str
 
 module Esa
   # 自分の日報から "所感" を抜き出す
