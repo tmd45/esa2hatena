@@ -6,10 +6,14 @@ require 'esa'
 require 'json'
 require 'pp'
 
+# bundle exec ruby esa2hatena.rb [2019-10-19]
+date_str = ARGV[0] || nil
+date = Date.parse(date_str)
+
 module Esa
   # 自分の日報から "所感" を抜き出す
   class RemarksExporter
-    attr_reader :client
+    attr_reader :client, :date
 
     def self.call(*args)
       new(*args).send(:call)
@@ -18,8 +22,10 @@ module Esa
     private
 
     # @param esa_client [Esa::Client]
-    def initialize(esa_client:)
+    # @param date [Date]
+    def initialize(esa_client:, date: nil)
       @client = esa_client
+      @date = date
     end
 
     # 実処理
@@ -65,7 +71,7 @@ module Esa
 
     # @return [String] Exp. "2019-10-11"
     def last_monday
-      today = Date.today
+      today = date || Date.today
       last_monday = today - (today.wday - 1)
       last_monday.to_s
     end
@@ -136,7 +142,7 @@ esa_client = Esa::Client.new(
   access_token: ENV['ESA_ACCESS_TOKEN'],
   current_team: ENV['ESA_CURRENT_TEAM']
 )
-contents = Esa::RemarksExporter.call(esa_client: esa_client)
+contents = Esa::RemarksExporter.call(esa_client: esa_client, date: date)
 
 # Hatena Blog
 auth = Atompub::Auth::Wsse.new(
